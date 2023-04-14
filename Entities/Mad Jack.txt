@@ -1,0 +1,36 @@
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Jack", -- Custom name of your entity
+    Model = "https://github.com/Destruction-Studios/Custom-Entities/blob/main/Jack.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 400, -- Percentage, 100 = default Rush speed
+    DelayTime = 3, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        10, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 10,
+        Max = 15,
+        WaitTime = 1,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You Died To Who You Call Jack", "Wait...", "Jack Doesn't Kill...", "I Dont Understand...", "This is Weird...", "Oh Well", "Anyways, I hope you dont mind trying again, It would be helpful."}, "Blue")
+})
+
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+  	end    

@@ -1,0 +1,46 @@
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+local entityTable = Spawner.createEntity({
+    CustomName = "Frunge", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/Frunge.rbxm?raw=true",
+    Speed = 50,
+    DelayTime = 10,
+    HeightOffset = 0,
+    CanKill = false,
+    KillRange = 50,
+    BackwardsMovement = true,
+    BreakLights = false,
+    FlickerLights = {
+        false, -- Enabled/Disabled
+    },
+    Cycles = {
+        Min = 1,
+        Max = 2,
+    },
+    CamShake = {
+        false, -- Enabled/Disabled
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+    },
+})
+
+entityTable.Debug.OnEntityStartMoving = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 5
+end
+
+entityTable.Debug.OnEntitySpawned = function()
+    firesignal(game.ReplicatedStorage.EntityInfo.Caption.OnClientEvent, 'its getting cold.')
+    game:GetService("Workspace")["Ambience_Dark"]:Play()
+end
+
+entityTable.Debug.OnLookAtEntity = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 3
+end
+
+entityTable.Debug.OnEntityDespawned = function()
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 15
+end
+
+Spawner.runEntity(entityTable)
+  	end    

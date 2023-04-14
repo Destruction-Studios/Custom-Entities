@@ -1,0 +1,58 @@
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "The Putrid", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/fatality.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 300, -- Percentage, 100 = default Rush speed
+    DelayTime = 5, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        100, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 10,
+        Max = 35,
+        WaitTime = .1,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {5555, 133124, 0, 1.5}, -- Shake values (don't change if you don't know)
+        60, -- Shake start distance (from Entity to you)
+    },
+    Jumpscare = {
+        true, -- Enabled/Disabled
+        {
+            Image1 = "rbxassetid://0", -- Image1 url
+            Image2 = "rbxassetid://0", -- Image2 url
+            Shake = true,
+            Sound1 = {
+                7817626386, -- SoundId
+                { Volume = 5 }, -- Sound properties
+            },
+            Sound2 = {
+                0, -- SoundId
+                { Volume = 0.5 }, -- Sound properties
+            },
+            Flashing = {
+                false, -- Enabled/Disabled
+                Color3.fromRGB(255, 255, 255), -- Color
+            },
+            Tease = {
+                true, -- Enabled/Disabled
+                Min = 50,
+                Max = 50,
+            },
+        },
+    },
+   firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died who you call Putrid", "Once you hear the noise you just heard...", "FIND SOMEWHERE TO HIDE", "Closets will NOT protect you.", "he is too fast, and hide WILL KICK YOU OUT", "I hope you find a way to beat Him"}, "Blue") 
+})
+
+Spawner.runEntity(entityTable)
+  	end    

@@ -1,0 +1,31 @@
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+local entityTable = Spawner.createEntity({
+    CustomName = "A-60", -- Custom name of your entity
+    Model = "https://github.com/tonyBflako/vynixusdoors/blob/main/A60edit.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 250, -- Percentage, 100 = default Rush speed
+    DelayTime = 2, -- Time before starting cycles (seconds)
+    HeightOffset = 2.5,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = false,
+    FlickerLights = {
+        false, -- Enabled/Disabled
+        1, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 1,
+        Max = 1,
+        WaitTime = 2,
+    },
+    CamShake = {
+        false, -- Enabled/Disabled
+    },
+    Jumpscare = {
+        false, -- Enabled/Disabled
+    },
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"Oh... Hello.", "I'm surprised you found this place...", "It's pretty tedious just to get here, last time I checked.", "Anyways, what'd you die to?", "Oh... the red one. I'm not too sure on what I would call it...", "Well, it usually attacks around room A-60, so...", "...you could just call it A-60. I dont know.", "Anyways, I hope you dont mind trying again, It would be helpful."}, "Yellow")
+})
+
+Spawner.runEntity(entityTable)
+  	end    

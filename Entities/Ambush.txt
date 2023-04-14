@@ -1,0 +1,38 @@
+local Spawner = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/Utilities/main/Doors%20Entity%20Spawner/Source.lua"))()
+
+
+-- Create entity
+local entityTable = Spawner.createEntity({
+    CustomName = "Ambush", -- Custom name of your entity
+    Model = "https://github.com/Destruction-Studios/Custom-Entities/blob/main/Ambush.rbxm?raw=true", -- Can be GitHub file or rbxassetid
+    Speed = 250, -- Percentage, 100 = default Rush speed
+    DelayTime = 8, -- Time before starting cycles (seconds)
+    HeightOffset = 0,
+    CanKill = canKill,
+    KillRange = 50,
+    BackwardsMovement = false,
+    BreakLights = true,
+    FlickerLights = {
+        true, -- Enabled/Disabled
+        3, -- Time (seconds)
+    },
+    Cycles = {
+        Min = 2,
+        Max = 6,
+        WaitTime = 2,
+    },
+    CamShake = {
+        true, -- Enabled/Disabled
+        {3.5, 20, 0.1, 1}, -- Shake values (don't change if you don't know)
+        100, -- Shake start distance (from Entity to you)
+    },
+    firesignal(game.ReplicatedStorage.EntityInfo.DeathHint.OnClientEvent, {"You died to who you call Ambush", "Its a tricky one", "Use what you have learned from Rush"}, "Blue")
+})
+
+entityTable.Debug.OnEntitySpawned = function()
+    game.Workspace.Ambience_Ambush:play()
+end
+
+-- Run the created entity
+Spawner.runEntity(entityTable)
+  	end    
